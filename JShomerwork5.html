@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+      body{background:white;}  
+ 
+ .nav-ct li, a {
+     display:inline-block;
+     text-align:center;
+     font: normal 14px Open Sans;
+     text-decoration:none;
+     color:#000; 
+ }
+  
+ a:hover {
+     font-weight:bold;
+     text-decoration:none; 
+ }
+ a::after {
+     display: block;
+     content: attr(title);
+     font-weight: bold;
+     height: 0;
+     overflow: hidden;
+     visibility: hidden;
+ }
+</style>
+
+<script>
+  
+function look(type)
+  {
+   param=document.getElementById(type);
+   if(param.style.display == "none") param.style.display = "block";
+   else param.style.display = "none"
+  } 
+  </script>
+</head>
+
+<body>
+  <form style="list-style-type:disc;">
+   
+    <div id="div0" name="title" style="display:block;">
+
+    <li style="list-style-type:disc;">
+      <span><a href="javascript:look('div1');">This PC</a></span>
+    </li>
+
+    <div id="div1" style="display:block; list-style-type:circle;">
+
+    <ul class ="nav_ct">
+      <li style="list-style-type:circle;">
+        <span><a href="javascript:look('div2');">Local Disc(C:)</a></span>
+
+        <div id="div2" style="display:block">
+          <ul style="list-style-type:disc;">
+            <li><span>Program Files</span>            
+            <li><span>Users</span></li>
+            <li><span>Windows </span></li>
+
+          </ul>
+      </li>
+    </ul>
+
+     <ul class="nav_ct">
+     <li style="list-style-type:circle;">
+      <span><a href="javascript:look('div3');">Local Disc(D:)</a></span>
+
+        <div id="div3" style="display:block;">
+        <ul style="list-style-type:disc;">
+          <li><span>New Folder 1</span></li>
+          <li><span>New Folder 2</span></li>
+          <li><span>New Folder 3</span></li>
+        </ul>
+      </li>
+    </ul>
+
+      <ul class="nav_ct">
+      <li style="list-style-type:circle;">
+        <span><a href="javascript:look('div4');">Local Disc(E:)</a></span></li>
+        <div id="div4" style="display:block">
+      </ul>
+    
+    </form>
+  </body>
+  </html>
