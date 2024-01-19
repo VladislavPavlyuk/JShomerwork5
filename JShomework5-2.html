@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>title</title>
+</head>
+<body>
+  <h4>10 Paperback Books We Think Are Must Reads</h4>
+  <ol id="book_ol">
+    <li class="li_book" id="book 1" onclick="chooseABook(event, 1)">Love in the Time of Cholera
+      By Gabriel García Márquez</li>
+    <li class="li_book" id="book 2" onclick="chooseABook(event, 2)">The Talented Mr. Ripley (B&N Exclusive Edition)
+      By Patricia Highsmith</li>
+    <li class="li_book" id="book 3" onclick="chooseABook(event, 3)">From the Mixed-Up Files of Mrs. Basil E. Frankweiler
+      By E. L. Konigsburg</li>
+    <li class="li_book" id="book 4" onclick="chooseABook(event, 4)">Rebecca
+      By Daphne du Maurier</li>
+    <li class="li_book" id="book 5" onclick="chooseABook(event, 5)">Holes
+      By Louis Sachar</li>
+    <li class="li_book" id="book 6" onclick="chooseABook(event, 6)">Atonement
+      By Ian McEwan</li>
+    <li class="li_book" id="book 7" onclick="chooseABook(event, 7)">Kindred
+      By Octavia Butler</li>
+    <li class="li_book" id="book 8" onclick="chooseABook(event, 8)">Play It As It Lays
+      By Joan Didion</li>
+      <li class="li_book" id="book 9" onclick="chooseABook(event, 9)">The Phantom Tollbooth
+        By Norton Juster</li>
+      <li class="li_book" id="book 10" onclick="chooseABook(event, 10)">We Have Always Lived in the Castle: (Penguin Classics Deluxe Edition)
+        By Shirley Jackson</li>
+</ol>
+<script>
+    function chooseABook(e, number) {
+        if (event.ctrlKey) {
+            bookId = number;
+            let lineWithBook = document.getElementById(`book ${number}`);                   //получаем доступ к элементу с нужным id
+            let lineStyle = getComputedStyle(lineWithBook);                                 //обращаемся к стилям найденого элемента
+            if (lineStyle.backgroundColor == "rgb(255, 165, 0)") {                          //если оранжевый, 
+                lineWithBook.style = `background-color: inherit;`;                          //меняем  на цвет родителя
+            } else if (lineStyle.backgroundColor == "rgba(0, 0, 0, 0)") {                   //если цвет родителя,
+                        lineWithBook.style = `background-color: orange;`;                   //меняем на оранжевый
+                    }
+        } else if (event.shiftKey) {
+            let shiftKeyId = number;
+            let idArr = [];
+            idArr[0] = shiftKeyId;
+            idArr[1] = bookId;
+            let minId = Math.min(idArr[0], idArr[1]);
+            let maxId = Math.max(idArr[0], idArr[1]);
+            for (minId; minId <= maxId; minId++){
+            let shiftLineWithBook = document.getElementById(`book ${minId}`);
+            shiftLineWithBook.style = `background-color: orange;`;
+            }
+                } else {
+                    bookId = number;
+                    console.log(bookId);
+                    const numberOfLines = document.querySelectorAll('li.li_book');                //находим колличество строк книг в списке
+                        for (let i = 0; i < numberOfLines.length; i++) {                                    //каждой строке возвращаем цвет фона родительского элемента
+                            let takeEverything = document.getElementById(`book ${i+1}`);                    //получаем доступ к элементу с нужным id 
+                            takeEverything.style = `background-color: inherit;`;                            //меняем цвет выбраного элемента
+                        }        
+                    let takeEverything = document.getElementById(`book ${number}`);                     //получаем доступ к элементу с нужным id 
+                    takeEverything.style = `background-color: orange;`;                                 //меняем цвет выбраного элемента
+                }
+    }
+</script>
+</body>
+</html>
